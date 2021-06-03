@@ -7,8 +7,16 @@ public class Roteador {
 	private String marca;
 
 	private int qtdAntenas;
+	
+	private double preco;
 
 	
+	public double getPreco() {
+		return preco;
+	}
+	public void setPreco(double preco) {
+		this.preco = preco;
+	}
 	public String getNome() {
 		return nome;
 	}

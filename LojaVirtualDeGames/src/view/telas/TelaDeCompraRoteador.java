@@ -13,14 +13,13 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class TelaDeCompraRoteador extends Application implements EventHandler<ActionEvent>{
-
+	
 	private TelaInicialControl control = new TelaInicialControl();
 	
 	private TextField txtNomeRoteador = new TextField();
 	private TextField txtMarcaRoteador = new TextField();
 	private TextField txtRoteadorQtdAntenas = new TextField();
-//	private TextField txtXbox = new TextField();
-//	private TextField txtPlaystation = new TextField();
+	private TextField txtRoteadorPreco = new TextField();
 	
 	private Button btnAdicionar = new Button("Adicionar");
 	private Button btnPesquisar = new Button("Pesquisar");
@@ -37,8 +36,7 @@ public class TelaDeCompraRoteador extends Application implements EventHandler<Ac
 		Label lblRoteadorNome = new Label("Nome do Roteador");
 		Label lblRoteadorMarcar = new Label("Marca do Roteador");
 		Label lblRoteadorQtdAntenas = new Label("Quantidade de Antenas");
-//		Label lblXbox = new Label("Xbox");
-//		Label lblPlaystation = new Label("Playstation");
+		Label lblRoteadorPreco = new Label("Preço");
 		
 		painel.add(lblProdutos, 0, 0);
 		painel.add(lblQtd, 1, 0);
@@ -49,10 +47,8 @@ public class TelaDeCompraRoteador extends Application implements EventHandler<Ac
 		painel.add(txtMarcaRoteador, 1, 3);
 		painel.add(lblRoteadorQtdAntenas, 0, 4);
 		painel.add(txtRoteadorQtdAntenas, 1, 4);
-//		painel.add(lblXbox, 0, 2);
-//		painel.add(txtXbox, 1, 2);
-//		painel.add(lblPlaystation, 0, 3);
-//		painel.add(txtPlaystation, 1, 3);
+		painel.add(lblRoteadorPreco, 0, 5);
+		painel.add(txtRoteadorPreco, 1, 5);
 		
 		btnAdicionar.setOnAction((e)->{
 			Roteador r = boundaryToEntity();
@@ -64,8 +60,8 @@ public class TelaDeCompraRoteador extends Application implements EventHandler<Ac
 			this.entityToBondery(r);
 		});
 		
-		painel.add(btnAdicionar, 0, 5);
-		painel.add(btnPesquisar, 1, 5);
+		painel.add(btnAdicionar, 0, 6);
+		painel.add(btnPesquisar, 1, 6);
 
 		stage.setScene(scn);
 		stage.setTitle("RECTUM COPIA");
@@ -78,7 +74,8 @@ public class TelaDeCompraRoteador extends Application implements EventHandler<Ac
 		r.setNome(txtNomeRoteador.getText());
 		r.setMarca(txtMarcaRoteador.getText());
 		try {
-			r.setQtdAntenas(Integer.parseInt(txtRoteadorQtdAntenas.getText())); 
+			r.setQtdAntenas(Integer.parseInt(txtRoteadorQtdAntenas.getText()));
+			r.setPreco(Double.parseDouble(txtRoteadorPreco.getText()));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -90,6 +87,7 @@ public class TelaDeCompraRoteador extends Application implements EventHandler<Ac
 			txtNomeRoteador.setText(r.getNome());
 			txtMarcaRoteador.setText(r.getMarca());
 			txtRoteadorQtdAntenas.setText(String.valueOf(r.getQtdAntenas()));
+			txtRoteadorPreco.setText(String.valueOf(r.getPreco()));
 		}
 	}
 
